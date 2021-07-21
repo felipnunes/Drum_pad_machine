@@ -9,6 +9,9 @@ int main()
     sf::RenderWindow window(sf::VideoMode(screenSise, screenSise), "DPM");
     display *drum_pad = new display(screenSise);
     sound *som = new sound();
+    int *frame; 
+    frame = (int*)malloc (sizeof (int));
+    *frame = 0;
 
     while (window.isOpen())
     {
@@ -37,7 +40,7 @@ int main()
 
         //atualiza o audio
 
-        som->comands(som, drum_pad);
+        som->comands(som, drum_pad, frame);
 
 
 

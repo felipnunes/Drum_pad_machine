@@ -9,17 +9,19 @@ int const qtd_presets = 1;
 
 class sound {
     public:
+    bool is_pressed[qtd_audios];
     sf::SoundBuffer buffer;
     sf::SoundBuffer samples_base[qtd_audios][qtd_presets];
     sf::Sound preset_data_base[qtd_audios][qtd_presets];
     sf::Sound actual_preset[qtd_audios];
     void setActualPreset(int preset_code);
     void playSound(int sound_code);
-    void comands(sound *som, display *drum_pad);
+    void comands(sound *som, display *drum_pad, int *frame);
     sound();
 };
 
 sound::sound() {
+
 
     //carrega os arquivos
 
@@ -58,14 +60,19 @@ void sound::playSound(int sound_code) {
     this->actual_preset[sound_code].play();
 }
 
-void sound::comands(sound *som, display *drum_pad) {
+void sound::comands(sound *som, display *drum_pad, int *frame) {
     //comandos do drumpad
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::R)) {
-        som->playSound(6);
-        drum_pad->pressed_color(0,0);
+        if (*frame == 0) {
+            som->playSound(6);
+            drum_pad->pressed_color(0,0);
+            *frame = 1;
+        }
     }
         else {
             drum_pad->reset_matrix(0,0);
+            is_pressed[0] = false;
+            *frame = 0;
         }
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::T)) {
         som->playSound(7);
@@ -124,4 +131,3 @@ void sound::comands(sound *som, display *drum_pad) {
             drum_pad->reset_matrix(2,2);
         }
 }
-
