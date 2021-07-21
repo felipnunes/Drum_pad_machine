@@ -7,7 +7,7 @@ int const screenSise = 500;
 int main()
 {
     sf::RenderWindow window(sf::VideoMode(screenSise, screenSise), "DPM");
-    display display(screenSise);
+    display *drum_pad = new display(screenSise);
     sound *som = new sound();
 
     while (window.isOpen())
@@ -27,55 +27,24 @@ int main()
 
         window.clear();
 
-        //atualiza o display
+        //atualiza o drum_pad
         for(int i = 0; i < 3; i++) {
             for(int j = 0; j < 3; j++) {
-                window.draw(display.matrix[i][j]);
+                window.draw(drum_pad->matrix[i][j]);
             }
         }
 
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::Enter)) {
-            display.reset_matrix();
+            drum_pad->reset_matrix();
         }
+
         //atualiza o audio
 
-        //comandos do drumpad
-                if(sf::Keyboard::isKeyPressed(sf::Keyboard::V)) {
-                    som->playSound(0);
-                    display.pressed_color(0,2);
-                }
-                else if(sf::Keyboard::isKeyPressed(sf::Keyboard::B)) {
-                    som->playSound(1);
-                    display.pressed_color(1,2);
-                }
-                else if(sf::Keyboard::isKeyPressed(sf::Keyboard::N)) {
-                    som->playSound(2);
-                    display.pressed_color(2,2);
-                }
-                else if(sf::Keyboard::isKeyPressed(sf::Keyboard::F)) {
-                    som->playSound(3);
-                    display.pressed_color(0,1);
-                }
-                else if(sf::Keyboard::isKeyPressed(sf::Keyboard::G)) {
-                    som->playSound(4);
-                    display.pressed_color(1,1);
-                }
-                else if(sf::Keyboard::isKeyPressed(sf::Keyboard::H)) {
-                    som->playSound(5);
-                    display.pressed_color(2,1);
-                }
-                else if(sf::Keyboard::isKeyPressed(sf::Keyboard::R)) {
-                    som->playSound(6);
-                    display.pressed_color(0,0);
-                }
-                else if(sf::Keyboard::isKeyPressed(sf::Keyboard::T)) {
-                    som->playSound(7);
-                    display.pressed_color(1,0);
-                }
-                else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Y)) {
-                    som->playSound(8);
-                    display.pressed_color(2,0);
-                }
+        som->comands(som, drum_pad);
+
+
+
+        
 
         window.display();
 
