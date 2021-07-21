@@ -16,7 +16,7 @@ class sound {
     sf::Sound actual_preset[qtd_audios];
     void setActualPreset(int preset_code);
     void playSound(int sound_code);
-    void comands(sound *som, display *drum_pad, int *frame);
+    void comands(sound *som, display *drum_pad);
     sound();
 };
 
@@ -60,74 +60,105 @@ void sound::playSound(int sound_code) {
     this->actual_preset[sound_code].play();
 }
 
-void sound::comands(sound *som, display *drum_pad, int *frame) {
+void sound::comands(sound *som, display *drum_pad) {
     //comandos do drumpad
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::R)) {
-        if (*frame == 0) {
+        if (is_pressed[0] == false) {
             som->playSound(6);
             drum_pad->pressed_color(0,0);
-            *frame = 1;
+            this->is_pressed[0] = true;
         }
     }
         else {
             drum_pad->reset_matrix(0,0);
-            is_pressed[0] = false;
-            *frame = 0;
+            this->is_pressed[0] = false;
         }
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::T)) {
-        som->playSound(7);
-        drum_pad->pressed_color(1,0);
+        if (is_pressed[1] == false) {
+            som->playSound(7);
+            drum_pad->pressed_color(1,0);
+            this->is_pressed[1] = true;
+        }
     }
         else {
             drum_pad->reset_matrix(1,0);
+            this->is_pressed[1] = false;
         }
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Y)) {
-        som->playSound(8);
-        drum_pad->pressed_color(2,0);
+        if (is_pressed[2] == false) {
+            som->playSound(8);
+            drum_pad->pressed_color(2,0);
+            this->is_pressed[2] = true;
+        }
     }
         else {
             drum_pad->reset_matrix(2,0);
+            this->is_pressed[2] = false;
         }
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::F)) {
-        som->playSound(3);
-        drum_pad->pressed_color(0,1);
+        if (is_pressed[3] == false) {
+            som->playSound(3);
+            drum_pad->pressed_color(0,1);
+            this->is_pressed[3] = true;
+        }
     }
         else {
             drum_pad->reset_matrix(0,1);
+            this->is_pressed[3] = false;
         }
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::G)) {
-        som->playSound(4);
-        drum_pad->pressed_color(1,1);
+        if (is_pressed[4] == false) {
+            som->playSound(4);
+            drum_pad->pressed_color(1,1);
+            this->is_pressed[4] = true;
+        }
     }
         else {
             drum_pad->reset_matrix(1,1);
+            this->is_pressed[4] = false;
         }
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::H)) {
-        som->playSound(5);
-        drum_pad->pressed_color(2,1);
+        if (is_pressed[5] == false) {
+            som->playSound(5);
+            drum_pad->pressed_color(2,1);
+            this->is_pressed[5] = true;
+        }
     }
         else {
             drum_pad->reset_matrix(2,1);
+            this->is_pressed[5] = false;
         }
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::V)) {
-        som->playSound(0);
-        drum_pad->pressed_color(0,2);
+        if (is_pressed[6] == false) {
+            som->playSound(0);
+            drum_pad->pressed_color(0,2);
+            this->is_pressed[6] = true;
+        }
     }
         else {
             drum_pad->reset_matrix(0,2);
+            this->is_pressed[6] = false;
         }
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::B)) {
-        som->playSound(1);
-        drum_pad->pressed_color(1,2);
+        if (is_pressed[7] == false) {
+            som->playSound(1);
+            drum_pad->pressed_color(1,2);
+            this->is_pressed[7] = true;
+        }
     }
         else {
             drum_pad->reset_matrix(1,2);
+            this->is_pressed[7] = false;
         }
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::N)) {
-        som->playSound(2);
-        drum_pad->pressed_color(2,2);
+        if (is_pressed[8] == false) {
+            som->playSound(2);
+            drum_pad->pressed_color(2,2);
+            this->is_pressed[8] = true;
+        }
     }
         else {
             drum_pad->reset_matrix(2,2);
+            this->is_pressed[8] = false;
         }
 }
