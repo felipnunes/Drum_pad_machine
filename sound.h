@@ -5,7 +5,7 @@
 
 
 int const qtd_audios = 9;
-int const qtd_presets = 1;
+int const qtd_presets = 3;
 
 class sound {
     public:
@@ -17,6 +17,7 @@ class sound {
     void setActualPreset(int preset_code);
     void playSound(int sound_code);
     void comands(sound *som, display *drum_pad);
+    void volumeControl();
     sound();
 };
 
@@ -26,17 +27,27 @@ sound::sound() {
     //carrega os arquivos
 
     //sample_1
-    samples_base[0][0].loadFromFile("kick1.wav");
-    samples_base[1][0].loadFromFile("hihat1.wav");
-    samples_base[2][0].loadFromFile("clap1.wav");
-    samples_base[3][0].loadFromFile("open_hihat1.wav");
-    samples_base[4][0].loadFromFile("TOM 1.wav");
-    samples_base[5][0].loadFromFile("TOM 2.wav");
-    samples_base[6][0].loadFromFile("TOM 3.wav");
-    samples_base[7][0].loadFromFile("snare1.wav");
-    samples_base[8][0].loadFromFile("open_hihat1_2.wav");
+    samples_base[0][0].loadFromFile("assets/audios/sample1/kick1.wav");
+    samples_base[1][0].loadFromFile("assets/audios/sample1/hihat1.wav");
+    samples_base[2][0].loadFromFile("assets/audios/sample1/clap1.wav");
+    samples_base[3][0].loadFromFile("assets/audios/sample1/open_hihat1.wav");
+    samples_base[4][0].loadFromFile("assets/audios/sample1/TOM 1.wav");
+    samples_base[5][0].loadFromFile("assets/audios/sample1/TOM 2.wav");
+    samples_base[6][0].loadFromFile("assets/audios/sample1/TOM 3.wav");
+    samples_base[7][0].loadFromFile("assets/audios/sample1/snare1.wav");
+    samples_base[8][0].loadFromFile("assets/audios/sample1/open_hihat1_2.wav");
 
     //sample_2
+
+    samples_base[0][1].loadFromFile("assets/audios/sample1/kick1.wav");
+    //samples_base[1][1].loadFromFile("");
+    //samples_base[2][1].loadFromFile("");
+    //samples_base[3][1].loadFromFile("assets/audios/sample2/");
+    //samples_base[4][1].loadFromFile("assets/audios/sample2/");
+    //samples_base[5][1].loadFromFile("assets/audios/sample2/");
+    samples_base[6][1].loadFromFile("assets/audios/sample2/zebrallete1.wav");
+    samples_base[7][1].loadFromFile("assets/audios/sample2/zebrallete2.wav");
+    samples_base[8][1].loadFromFile("assets/audios/sample2/zebrallete3.wav");
 
     for(int i = 0; i < qtd_audios; i++) {
         //seta o standart
@@ -54,6 +65,8 @@ void sound::setActualPreset(int preset_code) {
         this->actual_preset[i].setBuffer(samples_base[i][preset_code]);
     }
 
+    this->volumeControl();
+
 }
 
 void sound::playSound(int sound_code) {
@@ -61,6 +74,19 @@ void sound::playSound(int sound_code) {
 }
 
 void sound::comands(sound *som, display *drum_pad) {
+    //comandos para troca de samples
+
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Num1)) {
+        som->setActualPreset(0);
+    }
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Num2)) {
+        som->setActualPreset(1);
+    }
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Num3)) {
+        som->setActualPreset(2);
+    }
+
+
     //comandos do drumpad
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::R)) {
         if (is_pressed[0] == false) {

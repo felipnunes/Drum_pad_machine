@@ -15,9 +15,9 @@ class display {
 
 display::display(int screenSise) {
     //carrega texturas
-    texture[0].loadFromFile("drum_pad1.jpg");
-    texture[1].loadFromFile("drum_pad2.jpg");
-    texture[2].loadFromFile("drum_pad3.jpg");
+    texture[0].loadFromFile("assets/images/drum_pad1.jpg");
+    texture[1].loadFromFile("assets/images/drum_pad2.jpg");
+    texture[2].loadFromFile("assets/images/drum_pad3.jpg");
 
     
     for(int i = 0; i < 3; i++) {
