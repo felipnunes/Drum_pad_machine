@@ -5,12 +5,12 @@ const int matrix_lenght = 3;
 //const int positionX = ;
 class display {
     public:
-    sf::Color original_color[3];
+    sf::Color original_color;
     sf::Sprite matrix[matrix_lenght][matrix_lenght];
     sf::Texture texture[3];
     display(int screenSise);
     void pressed_color(int x, int y);
-    void reset_matrix();
+    void reset_matrix(int i, int j);
 };
 
 display::display(int screenSise) {
@@ -41,25 +41,16 @@ display::display(int screenSise) {
         }
     }
 
-    for(int i = 0; i < 3; i++) {
-        original_color[i] = matrix[i][i].getColor();
-    }
+        original_color = matrix[0][0].getColor();
+    
 }
 
 void display::pressed_color(int x, int y) {
     this->matrix[x][y].setColor(sf::Color(130,33,25));
 }
 
-void display::reset_matrix() {
-    for(int i = 0; i < matrix_lenght; i++ ) {
-        for(int j = 0; j < matrix_lenght; j++) {
-
-            if(j = 0)
-            matrix[i][j].setColor(original_color[1]);
-            if(j = 1)
-            matrix[i][j].setColor(original_color[1]);
-            if(j = 2)
-            matrix[i][j].setColor(original_color[2]);
-        }
-    }
+void display::reset_matrix(int i, int j) {
+    
+    matrix[i][j].setColor(original_color);
+    
 }

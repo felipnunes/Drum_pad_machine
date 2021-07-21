@@ -9,7 +9,6 @@ int const qtd_presets = 1;
 
 class sound {
     public:
-    bool is_pressed[qtd_audios];
     sf::SoundBuffer buffer;
     sf::SoundBuffer samples_base[qtd_audios][qtd_presets];
     sf::Sound preset_data_base[qtd_audios][qtd_presets];
@@ -64,50 +63,65 @@ void sound::comands(sound *som, display *drum_pad) {
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::R)) {
         som->playSound(6);
         drum_pad->pressed_color(0,0);
-        is_pressed[0] = true;
     }
         else {
-            
+            drum_pad->reset_matrix(0,0);
         }
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::T)) {
         som->playSound(7);
         drum_pad->pressed_color(1,0);
-        is_pressed[1] = true;
     }
+        else {
+            drum_pad->reset_matrix(1,0);
+        }
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Y)) {
         som->playSound(8);
         drum_pad->pressed_color(2,0);
-        is_pressed[2] = true;
     }
+        else {
+            drum_pad->reset_matrix(2,0);
+        }
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::F)) {
         som->playSound(3);
         drum_pad->pressed_color(0,1);
-        is_pressed[3] = true;
     }
+        else {
+            drum_pad->reset_matrix(0,1);
+        }
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::G)) {
         som->playSound(4);
         drum_pad->pressed_color(1,1);
-        is_pressed[4] = true;
     }
+        else {
+            drum_pad->reset_matrix(1,1);
+        }
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::H)) {
         som->playSound(5);
         drum_pad->pressed_color(2,1);
-        is_pressed[5] = true;
     }
+        else {
+            drum_pad->reset_matrix(2,1);
+        }
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::V)) {
         som->playSound(0);
         drum_pad->pressed_color(0,2);
-        is_pressed[6] = true;
     }
+        else {
+            drum_pad->reset_matrix(0,2);
+        }
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::B)) {
         som->playSound(1);
         drum_pad->pressed_color(1,2);
-        is_pressed[7] = true;
     }
+        else {
+            drum_pad->reset_matrix(1,2);
+        }
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::N)) {
         som->playSound(2);
         drum_pad->pressed_color(2,2);
-        is_pressed[8] = true;
     }
+        else {
+            drum_pad->reset_matrix(2,2);
+        }
 }
 

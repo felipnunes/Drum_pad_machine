@@ -34,9 +34,6 @@ int main()
             }
         }
 
-        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Enter)) {
-            drum_pad->reset_matrix();
-        }
 
         //atualiza o audio
 
@@ -44,7 +41,7 @@ int main()
 
 
 
-        
+
 
         window.display();
 
