@@ -21,6 +21,8 @@ class sound {
 sound::sound() {
 
     //carrega os arquivos
+
+    //sample_1
     samples_base[0][0].loadFromFile("kick1.wav");
     samples_base[1][0].loadFromFile("hihat1.wav");
     samples_base[2][0].loadFromFile("clap1.wav");
@@ -30,6 +32,8 @@ sound::sound() {
     samples_base[6][0].loadFromFile("TOM 3.wav");
     samples_base[7][0].loadFromFile("snare1.wav");
     samples_base[8][0].loadFromFile("open_hihat1_2.wav");
+
+    //sample_2
 
     for(int i = 0; i < qtd_audios; i++) {
         //seta o standart

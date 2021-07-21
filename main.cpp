@@ -18,40 +18,11 @@ int main()
             if (event.type == sf::Event::Closed)
                 window.close();
 
-            if(event.type == sf::Event::KeyPressed)
+            if(event.type == sf::Event::KeyPressed){
                 if(event.key.code == sf::Keyboard::Escape) {
                     window.close();
                 }
-
-                //comandos do drumpad
-                else if(event.key.code == sf::Keyboard::V) {
-                    som->playSound(0);
-                }
-                else if(event.key.code == sf::Keyboard::B) {
-                    som->playSound(1);
-                }
-                else if(event.key.code == sf::Keyboard::N) {
-                    som->playSound(2);
-                }
-                else if(event.key.code == sf::Keyboard::F) {
-                    som->playSound(3);
-                }
-                else if(event.key.code == sf::Keyboard::G) {
-                    som->playSound(4);
-                }
-                else if(event.key.code == sf::Keyboard::H) {
-                    som->playSound(5);
-                }
-                else if(event.key.code == sf::Keyboard::R) {
-                    som->playSound(6);
-                }
-                else if(event.key.code == sf::Keyboard::T) {
-                    som->playSound(7);
-                }
-                else if(event.key.code == sf::Keyboard::Y) {
-                    som->playSound(8);
-                }
-
+            }
         }
 
         window.clear();
@@ -63,11 +34,52 @@ int main()
             }
         }
 
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Enter)) {
+            display.reset_matrix();
+        }
         //atualiza o audio
 
-        window.display();
-    }
+        //comandos do drumpad
+                if(sf::Keyboard::isKeyPressed(sf::Keyboard::V)) {
+                    som->playSound(0);
+                    display.pressed_color(0,2);
+                }
+                else if(sf::Keyboard::isKeyPressed(sf::Keyboard::B)) {
+                    som->playSound(1);
+                    display.pressed_color(1,2);
+                }
+                else if(sf::Keyboard::isKeyPressed(sf::Keyboard::N)) {
+                    som->playSound(2);
+                    display.pressed_color(2,2);
+                }
+                else if(sf::Keyboard::isKeyPressed(sf::Keyboard::F)) {
+                    som->playSound(3);
+                    display.pressed_color(0,1);
+                }
+                else if(sf::Keyboard::isKeyPressed(sf::Keyboard::G)) {
+                    som->playSound(4);
+                    display.pressed_color(1,1);
+                }
+                else if(sf::Keyboard::isKeyPressed(sf::Keyboard::H)) {
+                    som->playSound(5);
+                    display.pressed_color(2,1);
+                }
+                else if(sf::Keyboard::isKeyPressed(sf::Keyboard::R)) {
+                    som->playSound(6);
+                    display.pressed_color(0,0);
+                }
+                else if(sf::Keyboard::isKeyPressed(sf::Keyboard::T)) {
+                    som->playSound(7);
+                    display.pressed_color(1,0);
+                }
+                else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Y)) {
+                    som->playSound(8);
+                    display.pressed_color(2,0);
+                }
 
+        window.display();
+
+    }
     return 0;
 }
 
