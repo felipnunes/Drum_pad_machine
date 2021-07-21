@@ -39,15 +39,15 @@ sound::sound() {
 
     //sample_2
 
-    samples_base[0][1].loadFromFile("assets/audios/sample1/kick1.wav");
-    //samples_base[1][1].loadFromFile("");
-    //samples_base[2][1].loadFromFile("");
-    //samples_base[3][1].loadFromFile("assets/audios/sample2/");
-    //samples_base[4][1].loadFromFile("assets/audios/sample2/");
-    //samples_base[5][1].loadFromFile("assets/audios/sample2/");
     samples_base[6][1].loadFromFile("assets/audios/sample2/zebrallete1.wav");
     samples_base[7][1].loadFromFile("assets/audios/sample2/zebrallete2.wav");
     samples_base[8][1].loadFromFile("assets/audios/sample2/zebrallete3.wav");
+    samples_base[3][1].loadFromFile("assets/audios/sample2/solo1.wav");
+    samples_base[4][1].loadFromFile("assets/audios/sample2/solo2.wav");
+    samples_base[5][1].loadFromFile("assets/audios/sample2/solo3.wav");
+    samples_base[0][1].loadFromFile("assets/audios/sample2/kick1.wav");
+    samples_base[1][1].loadFromFile("assets/audios/sample2/hihat.wav");
+    samples_base[2][1].loadFromFile("assets/audios/sample2/snare.wav");
 
     for(int i = 0; i < qtd_audios; i++) {
         //seta o standart
@@ -65,7 +65,7 @@ void sound::setActualPreset(int preset_code) {
         this->actual_preset[i].setBuffer(samples_base[i][preset_code]);
     }
 
-    this->volumeControl();
+    //this->volumeControl();
 
 }
 
