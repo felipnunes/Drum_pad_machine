@@ -36,6 +36,7 @@ int main()
         }
 
 
+
         //atualiza o audio
 
         som->comands(som, drum_pad);

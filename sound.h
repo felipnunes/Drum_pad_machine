@@ -9,6 +9,7 @@ int const qtd_presets = 3;
 
 class sound {
     public:
+    int actual_preset_code;
     bool is_pressed[qtd_audios];
     sf::SoundBuffer buffer;
     sf::SoundBuffer samples_base[qtd_audios][qtd_presets];
@@ -60,12 +61,10 @@ sound::sound() {
 
 void sound::setActualPreset(int preset_code) {
 
+    actual_preset_code = preset_code;
     for(int i = 0; i < qtd_audios; i++) {
         this->actual_preset[i].setBuffer(samples_base[i][preset_code]);
     }
-
-    
-
 }
 
 void sound::playSound(int sound_code) {
@@ -77,14 +76,18 @@ void sound::comands(sound *som, display *drum_pad) {
 
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Num1)) {
         som->setActualPreset(0);
+        drum_pad->set_preset_number_color(actual_preset_code);
     }
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Num2)) {
         som->setActualPreset(1);
+        drum_pad->set_preset_number_color(actual_preset_code);
     }
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Num3)) {
         som->setActualPreset(2);
+        drum_pad->set_preset_number_color(actual_preset_code);
     }
 
+    
 
     //comandos do drumpad
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::R)) {

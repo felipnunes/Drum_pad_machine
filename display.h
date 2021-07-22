@@ -13,6 +13,7 @@ class display {
     display(int screenSise);
     void pressed_color(int x, int y);
     void reset_matrix(int i, int j);
+    void set_preset_number_color(int actual_preset_code);
 };
 
 display::display(int screenSise) {
@@ -64,6 +65,15 @@ display::display(int screenSise) {
 void display::pressed_color(int x, int y) {
     this->matrix[x][y].setColor(sf::Color(130,33,25));
 }
+void display:: set_preset_number_color(int actual_preset_code) {
+    this->icons_sprite[actual_preset_code].setColor(sf::Color::Red);
+    for(int i = 0; i < qtd_preset; i++) {
+        if(i != actual_preset_code) {
+            icons_sprite[i].setColor(sf::Color::White);
+        }
+    }
+}
+
 
 void display::reset_matrix(int i, int j) {
     
