@@ -9,7 +9,7 @@ int const qtd_presets = 3;
 
 class sound {
     public:
-    int actual_preset_code;
+    int actual_preset_code = 0;
     bool is_pressed[qtd_audios];
     sf::SoundBuffer buffer;
     sf::SoundBuffer samples_base[qtd_audios][qtd_presets];

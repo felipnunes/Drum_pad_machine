@@ -39,6 +39,7 @@ display::display(int screenSise) {
         icons_sprite[i].setPosition(sf::Vector2f(screenSise/3 + 10 + i * 60, screenSise/11 - 10));
     }
 
+    icons_sprite[0].setColor(sf::Color::Red);
 
 
     
