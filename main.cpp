@@ -32,6 +32,7 @@ int main()
             for(int j = 0; j < 3; j++) {
                 window.draw(drum_pad->matrix[i][j]);
             }
+            window.draw(drum_pad->icons_sprite[i]);
         }
 
 

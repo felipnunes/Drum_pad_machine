@@ -17,7 +17,6 @@ class sound {
     void setActualPreset(int preset_code);
     void playSound(int sound_code);
     void comands(sound *som, display *drum_pad);
-    void volumeControl();
     sound();
 };
 
@@ -65,7 +64,7 @@ void sound::setActualPreset(int preset_code) {
         this->actual_preset[i].setBuffer(samples_base[i][preset_code]);
     }
 
-    //this->volumeControl();
+    
 
 }
 

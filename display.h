@@ -1,10 +1,12 @@
-#include<SFML/Graphics.hpp>
-#include<iostream>
+#include <SFML/Graphics.hpp>
+#include <iostream>
 const float square_side = 50.0;
 const int matrix_lenght = 3;
-//const int positionX = ;
+const int qtd_preset = 3;
 class display {
     public:
+    sf::Texture icons[qtd_preset];
+    sf::Sprite icons_sprite[qtd_preset];
     sf::Color original_color;
     sf::Sprite matrix[matrix_lenght][matrix_lenght];
     sf::Texture texture[3];
@@ -15,14 +17,28 @@ class display {
 
 display::display(int screenSise) {
     //carrega texturas
+
+    //pad texture
     texture[0].loadFromFile("assets/images/drum_pad1.jpg");
     texture[1].loadFromFile("assets/images/drum_pad2.jpg");
     texture[2].loadFromFile("assets/images/drum_pad3.jpg");
 
-    
     for(int i = 0; i < 3; i++) {
         texture[i].setSmooth(true);
     }
+    //icon texture
+
+    icons[0].loadFromFile("assets/images/1.png");
+    icons[1].loadFromFile("assets/images/2.png");
+    icons[2].loadFromFile("assets/images/3.png");
+    
+    for(int i = 0; i < qtd_preset; i++) {
+        icons[i].setSmooth(true);
+        icons_sprite[i].setTexture(icons[i]);
+        icons_sprite[i].setPosition(sf::Vector2f(screenSise/3 + 10 + i * 60, screenSise/11 - 10));
+    }
+
+
 
     
     //gera matriz de sprites
